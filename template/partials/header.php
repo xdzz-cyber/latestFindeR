@@ -31,15 +31,15 @@
                         <a class="nav-link active" aria-current="page" href="/clientUser/logout">Logout</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="../../admin/items/1">Admin</a>
+                        <a class="nav-link active" aria-current="page" href="../../admin/items/pagination/1">Admin</a>
                     </li>
                 </ul>
 
 
 
-                <form class="d-flex">
+                <form class="searchItemsForm d-flex">
                     <a href="#" class="mx-5"><i class="fa fa-shopping-basket fa-2x"></i></a>
-                    <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                    <input class="searchItemsInput form-control" type="search" placeholder="Search" aria-label="Search">
                 </form>
 
         </div>

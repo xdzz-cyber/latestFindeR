@@ -30,7 +30,7 @@ class ClientUserController
         if(ClientUser::userAlreadyExists($data)){
             $error = "User with given credentials already exists";
         } else if(ClientUser::userRegistration($data)){
-            setcookie("email", $data['userEmail'], time() + 60 * 60 * 24, "/");
+            setcookie("client_email", $data['userEmail'], time() + 60 * 60 * 24, "/");
         } else{
             $error = "Wrong credentials. Please, try again";
         }
@@ -55,7 +55,7 @@ class ClientUserController
     public function actionClientLoginResult(){
         $data = DB::protectData($_POST);
         if(ClientUser::userAlreadyExists($data)){
-            setcookie("email", $data['userEmail'], time() + 60 * 60 * 24, "/");
+            setcookie("client_email", $data['userEmail'], time() + 60 * 60 * 24, "/");
             header("location: ../clientItems/clientPagination/1");
         } else{
             $error = "Wrong credentials";
@@ -66,7 +66,7 @@ class ClientUserController
     }
 
     public function actionLogout(){
-        setcookie("email", "", time() - 7200, "/");
+        setcookie("client_email", "", time() - 7200, "/");
         $_COOKIE = [];
         $this->actionClientLogin();
         return true;

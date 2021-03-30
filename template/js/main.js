@@ -10,56 +10,56 @@ $(() => {
 
 
     class formValidation {
-        #email_filter = /\S+@\S+\.\S+/ig;
-        #email = userRegistrationEmail.parent().length ? userRegistrationEmail : userLoginEmail;
-        #password = userRegistrationPassword.parent().length ? userRegistrationPassword : userLoginPassword;
+        email_filter = /\S+@\S+\.\S+/ig;
+        email = userRegistrationEmail.parent().length ? userRegistrationEmail : userLoginEmail;
+        password = userRegistrationPassword.parent().length ? userRegistrationPassword : userLoginPassword;
 
         getEmail(){
-            return this.#email;
+            return this.email;
         }
 
         getPassword(){
-            return this.#password;
+            return this.password;
         }
 
         emailValidation() {
 
-            if (!this.#email.val().match(this.#email_filter) || !this.#email.val()) {
-                console.log("Email is NOT valid and value is " + this.#email.val());
-                this.#email.removeClass("border-success");
-                this.#email.addClass("border-warning");
+            if (!this.email.val().match(this.email_filter) || !this.email.val()) {
+                console.log("Email is NOT valid and value is " + this.email.val());
+                this.email.removeClass("border-success");
+                this.email.addClass("border-warning");
                 return false;
             }
-            console.log("Email is valid and value is " + this.#email.val());
-            this.#email.removeClass("border-warning");
-            this.#email.addClass("border-success");
+            console.log("Email is valid and value is " + this.email.val());
+            this.email.removeClass("border-warning");
+            this.email.addClass("border-success");
             return true;
 
         }
 
         passwordValidation() {
 
-            if (!this.#password.val()) {
-                this.#password.removeClass("border-success");
-                this.#password.addClass("border-warning");
+            if (!this.password.val()) {
+                this.password.removeClass("border-success");
+                this.password.addClass("border-warning");
                 return false;
             }
-            this.#password.removeClass("border-warning");
-            this.#password.addClass("border-success");
+            this.password.removeClass("border-warning");
+            this.password.addClass("border-success");
             return true;
 
         }
     }
 
     class makeSliderPrice{
-        #minPrice = 0;
-        #maxPrice = 400;
+        minPrice = 0;
+        maxPrice = 400;
 
         makeSlider(){
             $("#slider-range").slider({
                range: true,
-               min: this.#minPrice,
-               max: this.#maxPrice,
+               min: this.minPrice,
+               max: this.maxPrice,
                values: [50,250],
                 slide(event,ui){
                    $(".minPrice").val(ui.values[0]);
@@ -93,6 +93,13 @@ $(() => {
         });
     }
 
+    function banSearchIfNotLogIn(){
+        if (!$.cookie("email")){
+            $(".searchItemsInput").prop("disabled", true);
+        }
+    }
+
+    banSearchIfNotLogIn();
 
     changeMarginIfDanger();
 

@@ -5,7 +5,7 @@ trait ClientConnectPartials
 {
     public static function clientConnectParts($params){
         require_once CLIENT_ROOT . "/template/partials/header.php";
-        if(!isset($_COOKIE['email'])){
+        if(!isset($_COOKIE['client_email'])){
             $filename = isset($params['loginPage']) ? "/views/login/login.php" : "/views/registration/registration.php";
             require_once CLIENT_ROOT . $filename;
         } else{
