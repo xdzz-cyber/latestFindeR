@@ -1,0 +1,148 @@
+body{
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+}
+
+header{
+    width: 100%;
+    height: 15vh;
+    background: url("https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHw%3D&w=1000&q=80")no-repeat;
+    background-size: cover;
+}
+
+.navbar-brand{
+    font-size: 3vh!important;
+}
+
+header ul a, .navbar-brand{
+    color: #f0f0f0;
+    font-size: 2vh;
+}
+
+header ul a:hover, .navbar-brand:hover{
+    color: #ffe98a;
+}
+
+.mainHeaderContainer ul li{
+    margin-left: 10%;
+}
+
+.mainHeaderContainer ul li a{
+    font-size: 1.3rem;
+}
+
+footer{
+    background-color: #fc5296;
+    background-image: linear-gradient(315deg, #fc5296 0%, #f67062 74%);
+    color: #f0f0f0;
+    font-size: 2vh;
+}
+
+footer a{
+    color: #f0f0f0;
+    text-decoration: none;
+}
+
+/* Registration */
+.register:hover{
+    color: lightgoldenrodyellow;
+}
+
+/* Card */
+
+.card{
+    max-width: 540px;
+    display: inline-block;
+}
+
+.cardContainer{
+    position: relative;
+    bottom: 15vh;
+}
+
+/* Single item card */
+.singleItemCardContainer > *{
+    font-size: 1.2rem;
+    margin-top: 3%;
+}
+
+/* Single item header */
+
+.singleItemHeader{
+    margin: 1% 0 2%;
+}
+
+/* Single item image */
+
+.singleItemImage{
+    height: 25vh;
+    object-fit: cover;
+}
+
+/* Pagination */
+
+.pagination{
+    left: 43%;
+    position: absolute;
+    bottom: 18vh;
+}
+
+/* End of pagination */
+
+.asideNav{
+    width: 10%;
+}
+
+.asideWrap{
+    position: relative;
+    top: 16vh;
+    margin-left: 1%;
+}
+
+/* Find by price */
+.findByPrice{
+    font-size: 0.84rem;
+}
+
+.findByPriceLabel{
+    width: 40%;
+    height: 1vh;
+}
+
+/* About us */
+.aboutUsImage{
+    margin-top: 1%;
+    width: 12vw;
+    border-radius: 10%;
+}
+
+/* Contact page */
+.contactInfo > *{
+    margin-bottom: 1%;
+}
+
+.contactIconsContainer{
+    position: absolute;
+    left: 60%;
+    bottom: 40%;
+}
+
+.contactIconsContainer ul li{
+    padding-top: 1%;
+}
+
+.contactFormMessageContainer textarea{
+    max-height: 10rem;
+}
+
+/* Welcome header on main page */
+.welcomeHeader{
+    max-height: 0;
+}
+
+/* Registration and Login */
+.registrationFormContainer, .loginFormContainer{
+    margin-top: 12vh;
+}
