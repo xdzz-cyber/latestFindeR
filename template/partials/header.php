@@ -37,9 +37,9 @@
 
 
 
-                <form class="searchItemsForm d-flex">
+                <form action="/clientItems/findItemsByName" method="post" class="searchItemsForm d-flex">
                     <a href="#" class="mx-5"><i class="fa fa-shopping-basket fa-2x"></i></a>
-                    <input class="searchItemsInput form-control" type="search" placeholder="Search" aria-label="Search">
+                    <input class="searchItemsInput form-control" name="searchName" type="search" placeholder="Search" aria-label="Search">
                 </form>
 
         </div>

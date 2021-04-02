@@ -8,9 +8,8 @@
     <section>
         <div class="asideWrap">
             <aside class="asideNav d-inline-block">
-                <form action="/clientItems/find" method="post">
+                <form class="findByFiltersForm" action="/clientItems/findItemsByFilters" method="post">
                     <div class="pt-3">
-                        
                         <div class="mb-3">
                             <input type="text" class="minPrice d-inline-block form-control w-25 form-control-sm" name="minPrice" value="<?= $params['minPrice'] ?>">
                             -
@@ -18,7 +17,8 @@
 
 
                             <div class="d-inline-block findByPriceLabel">
-                                <label class="form-label"><a class="findByPrice badge bg-primary text-wrap text-white text-decoration-none" href="">Search</a></label>
+                                <input type="submit" class="findByFilters btn btn-sm btn-primary text-white" value="Search">
+<!--                                <label class="form-label"></label>  <a class="findByFilters badge bg-primary text-wrap text-white text-decoration-none" href="">Search</a>-->
                             </div>
 
                         </div>
@@ -33,8 +33,14 @@
 
                     <div class="pt-5">
                         <label for="" class="form-label">Find by category</label>
-                        <select name="findCategory" id="findCategory" class="form-select">
-                            <option value="first" selected>first</option>
+                        <select name="findByCategory" id="findByCategory" class="form-select">
+                            <?php
+                                foreach ($params['categories'] as $category):
+                            ?>
+                                    <option value="<?=$category['id']?>"><?=$category['category_name']?></option>
+                            <?php
+                            endforeach;
+                            ?>
                         </select>
                     </div>
                 </form>
@@ -66,25 +72,30 @@
             <ul class="pagination justify-content-center">
 
                 <?php
-                    if($params['hasPrev']){
-                        echo "<li class='page-item'><a class='page-link' href='/clientItems/clientPagination/{$params['prev']}'>Previous</a></li>";
-                    } else{
-                        echo "<li class='page-item disabled'><a class='page-link'>Previous</a></li>";
-                    }
 
-                    for($i = 1;$i <= $params['numPages']; $i++){
-                        if($params['current_page'] == $i){
-                            echo "<li class='page-item'><a class='page-link active' href='/clientItems/clientPagination/{$i}'>$i</a></li>";
+                    if ($params['numPages'] > 0){
+                        if($params['hasPrev']){
+                            echo "<li class='page-item'><a class='page-link' href='/clientItems/clientPagination/{$params['prev']}'>Previous</a></li>";
                         } else{
-                            echo "<li class='page-item'><a class='page-link' href='/clientItems/clientPagination/{$i}'>$i</a></li>";
+                            echo "<li class='page-item disabled'><a class='page-link'>Previous</a></li>";
+                        }
+
+                        for($i = 1;$i <= $params['numPages']; $i++){
+                            if($params['current_page'] == $i){
+                                echo "<li class='page-item'><a class='page-link active' href='/clientItems/clientPagination/{$i}'>$i</a></li>";
+                            } else{
+                                echo "<li class='page-item'><a class='page-link' href='/clientItems/clientPagination/{$i}'>$i</a></li>";
+                            }
+                        }
+
+                        if($params['hasNext']){
+                            echo "<li class='page-item'><a class='page-link' href='/clientItems/clientPagination/{$params['next']}'>Next</a></li>";
+                        } else{
+                            echo "<li class='page-item disabled'><a class='page-link'>Next</a></li>";
                         }
                     }
 
-                    if($params['hasNext']){
-                        echo "<li class='page-item'><a class='page-link' href='/clientItems/clientPagination/{$params['next']}'>Next</a></li>";
-                    } else{
-                       echo "<li class='page-item disabled'><a class='page-link'>Next</a></li>";
-                    }
+
                 ?>
             </ul>
         </nav>

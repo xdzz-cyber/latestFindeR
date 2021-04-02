@@ -94,10 +94,41 @@ $(() => {
     }
 
     function banSearchIfNotLogIn(){
-        if (!$.cookie("email")){
+        if (!$.cookie("client_email")){
             $(".searchItemsInput").prop("disabled", true);
         }
     }
+
+    function checkInputValueToSetCookie(){
+        $(".searchItemsInput").keyup(e => {
+            let searchName = $(e.target).val();
+           if (searchName){
+               $.cookie("client_search_name",searchName,{path: "/"});
+               console.log("addCookie")
+           } else{
+               $.removeCookie("client_search_name", {path: "/"});
+               console.log("removeCookie")
+           }
+        });
+    }
+
+    function setSearchNameInputValue(){
+         let searchName = $.cookie("client_search_name") ?? "";
+         $(".searchItemsInput").val(searchName);
+    }
+
+    function submitFiltersFormOnButton(){
+        $(".findByFilters").click(e => {
+           $(".findByFiltersForm").submit();
+        });
+    }
+
+    submitFiltersFormOnButton();
+
+    checkInputValueToSetCookie();
+
+    setSearchNameInputValue();
+
 
     banSearchIfNotLogIn();
 
