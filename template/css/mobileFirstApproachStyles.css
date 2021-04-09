@@ -1,0 +1,56 @@
+@media screen and (min-width: 620px){
+
+}
+
+@media screen and (min-width: 992px){
+
+    main{
+        margin: 7% auto;
+    }
+
+    /* About us */
+
+    .aboutUsImageContainer{
+        margin-bottom: 5%;
+    }
+
+    .aboutUsImageContainer img{
+        width: 22vw;
+    }
+
+    .aboutUsHeaderContainer{
+        max-width: 45vw;
+        margin: 3% auto;
+    }
+
+    .aboutUsHeaderContainer h2{
+        font-size: 1.5em;
+    }
+
+}
+
+@media screen and (min-width: 1200px){
+
+    main{
+        margin: 1% auto;
+    }
+
+    /* About us  */
+
+    .aboutUsImageContainer img{
+        width: 15vw;
+    }
+
+    .aboutUsHeaderContainer{
+        max-width: 45vw;
+        margin: 2% auto;
+    }
+
+    .aboutUsHeaderContainer h2{
+        font-size: 1.5em;
+    }
+
+    .followUs{
+        padding-bottom: 3%;
+    }
+}
