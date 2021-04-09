@@ -5,8 +5,6 @@ class ClientItems
 {
     public static function getItemsNumRows($search_params){
         $rowsCount = ClientItems::findItemsByFilters($search_params,true);
-        //var_dump($rowsCount);
-        //echo "rowsCount is $rowsCount";
         return $rowsCount;
     }
 
@@ -56,7 +54,6 @@ class ClientItems
     }
 
     public static function findItemsByFilters($search_params, $getNumRows = false){
-        //echo "zahod";
         $db = DB::getConnection();
         $skip = 0;
         $perPage = 0;
@@ -71,17 +68,11 @@ class ClientItems
             $skip = $search_params['skip'];
             $perPage = $search_params['perPage'];
 
-            //$query = "select * from items where name like :findByName and price between :minPrice and :maxPrice";
-            //$execute_array = [":findByName"=>$findByName, ":minPrice"=>$minPrice, ":maxPrice"=>$maxPrice];
             $query = "select * from items where name like {$findByName} and price between {$minPrice} and {$maxPrice}";
             if ($findByCategory > 0){
-                //$query.=" and category_id = :findByCategory";
-                //$execute_array[":findByCategory"] = $findByCategory;
                 $query.= " and category_id = {$findByCategory}";
             }
             if(!empty($findByDate)){
-                //$query.= " and publish_date = :findByDate";
-                //$execute_array[":findByDate"] = $findByDate;
                 $query.= " and publish_date > '{$findByDate}'";
             }
 
@@ -89,20 +80,8 @@ class ClientItems
             $query = "select * from items"; /* Later should be deleted, i believe */
         }
 
-        //$query.= " limit :skip,:perPage";
         $query.= !$getNumRows ? " limit {$skip}, {$perPage}" : "";
-
-        //$execute_array[":skip"] = $skip;
-        //$execute_array[":perPage"] = $perPage;
-
-        //print_r($execute_array);
         $stmt = $db->query($query);
-        //print_r($stmt);
-
-        //$stmt = $db->prepare($query);
-        //$stmt->execute($execute_array);
-
-        //echo $query . "<br>";
 
         if ($getNumRows){
             return $stmt->rowCount();

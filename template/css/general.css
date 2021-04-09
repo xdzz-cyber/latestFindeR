@@ -3,11 +3,12 @@ body{
     margin: 0;
     width: 100%;
     height: 100%;
+    box-sizing: border-box;
 }
 
 header{
     width: 100%;
-    height: 15vh;
+    height: 10vh;
     background: url("https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHw%3D&w=1000&q=80")no-repeat;
     background-size: cover;
 }
@@ -140,9 +141,18 @@ footer a{
 /* Welcome header on main page */
 .welcomeHeader{
     max-height: 0;
+    margin-top: 1%;
 }
 
 /* Registration and Login */
 .registrationFormContainer, .loginFormContainer{
     margin-top: 12vh;
+}
+
+
+/* No items found container */
+.noItemsFoundHeaderContainer{
+    position: absolute;
+    top: 40%;
+    left: 45%;
 }

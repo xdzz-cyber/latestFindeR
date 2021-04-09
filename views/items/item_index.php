@@ -1,9 +1,14 @@
 <main>
-    .
+
     <div class="welcomeHeader text-center">
         <h1 class="m-0 p-0">Welcome to findeR</h1>
         <p class="lead m-0 p-0">Find all the items that you need</p>
     </div>
+    <?php if(!$params['items']): ?>
+    <div class="noItemsFoundHeaderContainer">
+        <h2>No items found</h2>
+    </div>
+    <?php endif; ?>
 
     <section>
         <div class="asideWrap">
@@ -47,7 +52,6 @@
             </aside>
         </div>
 
-
         <div class="container cardContainer">
             <?php foreach ($params['items'] as $item):  ?>
             <div class="card my-md-4 mx-md-3">
@@ -65,8 +69,8 @@
                 </div>
             </div>
             <?php endforeach; ?>
-
         </div>
+
 
         <nav>
             <ul class="pagination justify-content-center">

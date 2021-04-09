@@ -18,7 +18,7 @@
     </div>
 </footer>
 
-<script src="/jQuery/jquery-3.5.1.min.js"></script>
+
 <script src="/jQuery/jquery.cookie.js"></script>
 <script src="/bootstrap/js/bootstrap.bundle.js"></script>
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>

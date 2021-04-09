@@ -1,4 +1,5 @@
 $(() => {
+
      const userRegistrationEmail = $(".userRegistrationEmail");
      const userRegistrationPassword = $(".userRegistrationPassword");
 
@@ -51,24 +52,7 @@ $(() => {
         }
     }
 
-    class makeSliderPrice{
-        minPrice = 0;
-        maxPrice = 400;
 
-        makeSlider(){
-            $("#slider-range").slider({
-               range: true,
-               min: this.minPrice,
-               max: this.maxPrice,
-               values: [50,250],
-                slide(event,ui){
-                   $(".minPrice").val(ui.values[0]);
-                   $(".maxPrice").val(ui.values[1]);
-                }
-            });
-
-        }
-    }
 
 
     function changeMarginIfDanger(){
@@ -123,21 +107,47 @@ $(() => {
         });
     }
 
+
+     async function getMaxMinPriceFromDB(){
+        // $.post("http://mvcShopLatest/template/gettingAsyncData/getMaxMinPrice.php", {}, function (data,textStatus){
+        //     return data;
+        // }, "json");
+
+        let response =  await fetch("http://mvcShopLatest/template/gettingAsyncData/getMaxMinPrice.php");
+        return await response.json();
+    }
+
+    async function makeSlider(){
+        const maxMinPriceObject = await getMaxMinPriceFromDB();
+        let {maxPrice, minPrice} = maxMinPriceObject[0];
+        maxPrice = parseInt(maxPrice, 10);
+        minPrice = parseInt(minPrice, 10);
+
+        $("#slider-range").slider({
+            range: true,
+            min: minPrice,
+            max: maxPrice,
+            values: [minPrice, maxPrice],
+            slide(event,ui){
+                $(".minPrice").val(ui.values[0]);
+                $(".maxPrice").val(ui.values[1]);
+            }
+        });
+    }
+
     submitFiltersFormOnButton();
 
     checkInputValueToSetCookie();
 
     setSearchNameInputValue();
 
-
     banSearchIfNotLogIn();
 
     changeMarginIfDanger();
 
-    let validationObject = new formValidation();
+    makeSlider();
 
-    let makeSliderPriceObject = new makeSliderPrice();
-    makeSliderPriceObject.makeSlider();
+    let validationObject = new formValidation();
 
     validationObject.getEmail().keyup(e => validationObject.emailValidation());
 

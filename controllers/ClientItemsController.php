@@ -70,14 +70,15 @@ class ClientItemsController
     public function actionFindItemsByFilters(){
         $data = DB::protectData($_POST);
 
-        print_r($data);
-
         $findByCategory = $data['findByCategory'] ?? "";
         $findByDate = $data['findByDate'] ?? "";
+        $minPrice = $data['minPrice'] ?? "";
+        $maxPrice = $data['maxPrice'] ?? "";
 
-        $custom_search_params = ["findByCategory"=>$findByCategory, "findByDate"=>$findByDate];
+        $custom_search_params = ["findByCategory"=>$findByCategory, "findByDate"=>$findByDate, "maxPrice"=>$maxPrice, "minPrice"=>$minPrice];
         $this->actionClientPagination(1, $custom_search_params);
         return true;
         // LATER DO WITH RANGE OF PRICE
     }
+
 }
