@@ -26,7 +26,7 @@
                 <input class="btn btn-primary w-25 mx-auto"  type="submit" name="submit" value="Send">
             </div>
 
-            <div class="contactIconsContainer col-md-3">
+            <div class="contactIconsContainer">
                 <ul class="list-unstyled mb-0">
                     <li><i class="fa fa-map-pin fa-2x"></i>
                         <p>San Francisco, CA 94126, USA</p>

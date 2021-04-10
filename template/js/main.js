@@ -1,13 +1,13 @@
 $(() => {
 
-     const userRegistrationEmail = $(".userRegistrationEmail");
-     const userRegistrationPassword = $(".userRegistrationPassword");
+    const userRegistrationEmail = $(".userRegistrationEmail");
+    const userRegistrationPassword = $(".userRegistrationPassword");
 
-     const userLoginEmail = $(".userLoginEmail");
-     const userLoginPassword = $(".userLoginPassword");
+    const userLoginEmail = $(".userLoginEmail");
+    const userLoginPassword = $(".userLoginPassword");
 
-     const loginForm = $(".loginForm");
-     const registrationForm = $(".registrationForm");
+    const loginForm = $(".loginForm");
+    const registrationForm = $(".registrationForm");
 
 
     class formValidation {
@@ -15,23 +15,21 @@ $(() => {
         email = userRegistrationEmail.parent().length ? userRegistrationEmail : userLoginEmail;
         password = userRegistrationPassword.parent().length ? userRegistrationPassword : userLoginPassword;
 
-        getEmail(){
+        getEmail() {
             return this.email;
         }
 
-        getPassword(){
+        getPassword() {
             return this.password;
         }
 
         emailValidation() {
 
             if (!this.email.val().match(this.email_filter) || !this.email.val()) {
-                console.log("Email is NOT valid and value is " + this.email.val());
                 this.email.removeClass("border-success");
                 this.email.addClass("border-warning");
                 return false;
             }
-            console.log("Email is valid and value is " + this.email.val());
             this.email.removeClass("border-warning");
             this.email.addClass("border-success");
             return true;
@@ -53,71 +51,68 @@ $(() => {
     }
 
 
-
-
-    function changeMarginIfDanger(){
-        if($(".alert-danger").text()){
+    function changeMarginIfDanger() {
+        if ($(".alert-danger").text()) {
             $(".registrationInfoContainer").removeClass("my-md-4");
             $(".loginInfoContainer").removeClass("my-md-4");
         }
     }
 
 
-
-    function preventEnterForm(){
+    function preventEnterForm() {
         let form = loginForm.parent().length ? loginForm : registrationForm;
         form.submit(e => {
-           if (!validationObject.emailValidation()){
-               e.preventDefault()
-           }
+            if (!validationObject.emailValidation()) {
+                e.preventDefault()
+            }
 
-           if (!validationObject.passwordValidation()){
-               e.preventDefault();
-           }
+            if (!validationObject.passwordValidation()) {
+                e.preventDefault();
+            }
         });
     }
 
-    function banSearchIfNotLogIn(){
-        if (!$.cookie("client_email")){
+    function banSearchIfNotLogIn() {
+        if (!$.cookie("client_email")) {
             $(".searchItemsInput").prop("disabled", true);
         }
     }
 
-    function checkInputValueToSetCookie(){
+    function checkInputValueToSetCookie() {
         $(".searchItemsInput").keyup(e => {
             let searchName = $(e.target).val();
-           if (searchName){
-               $.cookie("client_search_name",searchName,{path: "/"});
-               console.log("addCookie")
-           } else{
-               $.removeCookie("client_search_name", {path: "/"});
-               console.log("removeCookie")
-           }
+            if (searchName) {
+                $.cookie("client_search_name", searchName, {path: "/"});
+                console.log("addCookie")
+            } else {
+                $.removeCookie("client_search_name", {path: "/"});
+                console.log("removeCookie")
+            }
         });
     }
 
-    function setSearchNameInputValue(){
-         let searchName = $.cookie("client_search_name") ?? "";
-         $(".searchItemsInput").val(searchName);
+    function setSearchNameInputValue() {
+        let searchName = $.cookie("client_search_name") ?? "";
+        $(".searchItemsInput").val(searchName);
     }
 
-    function submitFiltersFormOnButton(){
+    function submitFiltersFormOnButton() {
         $(".findByFilters").click(e => {
-           $(".findByFiltersForm").submit();
+            $(".findByFiltersForm").submit();
         });
     }
 
 
-     async function getMaxMinPriceFromDB(){
+    async function getMaxMinPriceFromDB() {
         // $.post("http://mvcShopLatest/template/gettingAsyncData/getMaxMinPrice.php", {}, function (data,textStatus){
         //     return data;
         // }, "json");
 
-        let response =  await fetch("http://mvcShopLatest/template/gettingAsyncData/getMaxMinPrice.php");
+        let response = await fetch("http://mvcShopLatest/template/gettingAsyncData/getMaxMinPrice.php");
         return await response.json();
     }
 
-    async function makeSlider(){
+    async function makeSlider() {
         const maxMinPriceObject = await getMaxMinPriceFromDB();
         let {maxPrice, minPrice} = maxMinPriceObject[0];
         maxPrice = parseInt(maxPrice, 10);
@@ -128,12 +123,32 @@ $(() => {
             min: minPrice,
             max: maxPrice,
             values: [minPrice, maxPrice],
-            slide(event,ui){
+            slide(event, ui) {
                 $(".minPrice").val(ui.values[0]);
                 $(".maxPrice").val(ui.values[1]);
             }
         });
     }
+
+    function activateSearchBar(){
+        $(".openSearchElement").click(e => {
+            e.preventDefault();
+           $(".mainHeaderNavbarNav").hide();
+           $(".searchFormContainer").toggleClass("d-none");
+        });
+    }
+
+    function closeSearchBar(){
+        $(".closeSearchElement").click(e => {
+            e.preventDefault();
+            $(".searchFormContainer").toggleClass("d-none");
+            $(".mainHeaderNavbarNav").show();
+        })
+    }
+
+    activateSearchBar();
+
+    closeSearchBar();
 
     submitFiltersFormOnButton();
 

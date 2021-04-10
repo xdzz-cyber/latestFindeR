@@ -1,4 +1,70 @@
 @media screen and (min-width: 620px){
+    main{
+        margin: 13% auto;
+    }
+
+    /* Header */
+
+    header{
+        margin: 0;
+    }
+
+    .mainHeaderContainer{
+        position: relative;
+        right: 5%;
+    }
+
+    .mainHeaderContainer ul{
+        flex-direction: row;
+    }
+
+    .mainHeaderContainer ul li{
+        margin-left: 5%;
+    }
+
+    /* About us */
+
+    .aboutUsHeaderContainer{
+        max-width: 60vw;
+        margin: 3% auto;
+    }
+
+    .aboutUsHeaderContainer h2{
+        font-size: 1.3em;
+    }
+
+    .aboutUsImageContainer{
+        margin-bottom: 5%;
+    }
+
+    .aboutUsImageContainer img{
+        width: 25vw;
+    }
+
+    /* Search form */
+
+    .closeSearchElement{
+        position: relative;
+        right: 100%;
+        bottom: 11%;
+    }
+
+    .searchItemsInput{
+         width: 50vw;
+     }
+
+    /* Contact page */
+
+    .contactInfo p{
+        margin: 3% auto;
+        max-width: 50vw;
+    }
+
+    .contactIconsContainer{
+        position: absolute;
+        top: 40%;
+        left: 70%;
+    }
 
 }
 
@@ -27,6 +93,13 @@
         font-size: 1.5em;
     }
 
+    /* Contact page */
+
+    .contactIconsContainer{
+      position: absolute;
+        left: 70%;
+        top: 40%;
+    }
 }
 
 @media screen and (min-width: 1200px){
@@ -52,5 +125,17 @@
 
     .followUs{
         padding-bottom: 3%;
+    }
+
+    /* Search Form */
+
+    .searchItemsInput{
+        width: 20vw;
+    }
+
+    /* Contact page */
+    .contactIconsContainer{
+        position: absolute;
+        top: 35%;
     }
 }

@@ -16,11 +16,10 @@
 <body>
 <header>
     <nav class="navbar navbar-expand-lg">
-        <div class="mainHeaderContainer container-fluid">
+        <div class="mainHeaderContainer container">
             <a class="navbar-brand" href="/clientPagesShow/aboutPage">findeR</a>
 
-
-                <ul class="justify-content-evenly align-items-center navbar-nav mb-2 mb-lg-0">
+                <ul class="mainHeaderNavbarNav justify-content-evenly navbar-nav mb-lg-0">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/clientItems/clientPagination/1">Home</a>
                     </li>
@@ -39,13 +38,21 @@
                     <li class="nav-item">
                         <a href="#" class="nav-link"><i class="fa fa-shopping-basket"></i></a>
                     </li>
+                    <li class="nav-item">
+                        <a href="" class="openSearchElement nav-link"><i class="fa fa-search"></i></a>
+                    </li>
                 </ul>
 
 
+                <div class="searchFormContainer d-none">
+                    <form action="/clientItems/findItemsByName" method="post" class="searchItemsForm d-flex">
+                        <input class="searchItemsInput form-control" name="searchName" type="search" placeholder="Search" aria-label="Search">
+                        <div>
+                            <a class="closeSearchElement"><i class="fa fa-window-close"></i></a>
+                        </div>
+                    </form>
+                </div>
 
-                <form action="/clientItems/findItemsByName" method="post" class="searchItemsForm d-flex">
-                    <input class="searchItemsInput form-control" name="searchName" type="search" placeholder="Search" aria-label="Search">
-                </form>
 
         </div>
     </nav>
