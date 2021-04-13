@@ -160,3 +160,14 @@ footer a{
     top: 40%;
     left: 45%;
 }
+
+/* BASKET */
+
+.basketSingleImage{
+    width: 8vw!important;
+}
+
+.basketItemCountInput{
+    width: 3vw;
+    text-align: center;
+}

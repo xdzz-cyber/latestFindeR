@@ -21,6 +21,10 @@ class ClientRouter
         foreach ($this->routes as $pattern => $path){
             if (preg_match("~$pattern~", $URI)){
 
+                /* Update basket items counter whenever we reload page */
+
+                /* */
+
                 $internal_data =  preg_replace("~$pattern~", $path, $URI);
 
                 $sliced_data = explode("/",$internal_data);

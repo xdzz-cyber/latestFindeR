@@ -36,7 +36,7 @@
                         <a class="nav-link active" aria-current="page" href="../../admin/items/pagination/1">Admin</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link"><i class="fa fa-shopping-basket"></i></a>
+                        <a href="/clientBasket/showBasketItems" class="basketItemsPageLink nav-link"><i class="fa fa-shopping-basket"></i></a>
                     </li>
                     <li class="nav-item">
                         <a href="" class="openSearchElement nav-link"><i class="fa fa-search"></i></a>

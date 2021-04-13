@@ -12,7 +12,7 @@
                 <h5 class="card-title"><?=$params['item']['name']?></h5>
                 <p class="card-text"><?=$params['item']['description']?></p>
                 <p class="lead">Published at <?=$params['item']['publish_date']?></p>
-                <a href="" class="btn btn-success">Buy for <?=$params['item']['price']?></a>
+                <a href="/clientBasket/addItem/<?=$params['item']['id']?>" class="buyNewItemLink btn btn-success">Buy for <?=$params['item']['price']?></a>
             </div>
         </div>
     </div>

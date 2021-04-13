@@ -146,6 +146,41 @@ $(() => {
         })
     }
 
+    async function getBasketItemsCount(){
+        let rawData = await fetch("http://mvcShopLatest/template/gettingAsyncData/getBasketItemsCount.php");
+        let json_data = await rawData.json();
+        //debugger;
+        $(".fa-shopping-basket").append(json_data.count);
+        localStorage.setItem("basketItemsCount", json_data.count);
+    }
+
+    function showBasketPageIfNotEmpty(){
+
+        $(".basketItemsPageLink").click(e => {
+            //debugger;
+            let basketItemsCount =  parseInt(localStorage.getItem("basketItemsCount"),10);
+            let showBasket = false;
+            if (basketItemsCount > 0){
+                showBasket = true;
+            }
+           if (!showBasket){
+               e.preventDefault();
+           }
+        });
+    }
+
+    function onBuyItemLinkClick(){
+        $(".buyNewItemLink").click(e => {
+            getBasketItemsCount();
+        });
+    }
+
+    onBuyItemLinkClick();
+
+    showBasketPageIfNotEmpty();
+
+    getBasketItemsCount();
+
     activateSearchBar();
 
     closeSearchBar();
