@@ -1,8 +1,8 @@
 <main>
 
-    <div class="singleItemHeader text-center">
+    <div class="singleItemHeaderContainer text-center">
         <h2>Check this out</h2>
-        <p class="lead">Here you can find everything about the product that you've been looking for, and don't  be shy and ask questions if needed or simply contact us by the given address!</p>
+        <p class="singleItemText lead">Here you can find everything about the product that you've been looking for, and don't  be shy and ask questions if needed or simply contact us by the given address!</p>
     </div>
 
     <div class="row mw-100">

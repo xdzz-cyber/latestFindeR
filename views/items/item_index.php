@@ -10,33 +10,55 @@
     </div>
     <?php endif; ?>
 
-    <section>
-        <div class="asideWrap">
+
+    <section class="d-grid">
+
+        <div class="container-fluid d-grid cardContainer">
+            <?php
+            $i = 1;
+            foreach ($params['items'] as $item):  ?>
+                <div class="card my-sm-3 my-md-4 mx-md-3" style="grid-area: cardElement<?=$i++?>">
+                    <div class="row g-0">
+                        <div class="col-md-4">
+                            <img class="img-fluid" src="/template/images/<?=$item['photo']?>" alt="single image photo">
+                        </div>
+                        <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title"><a class="text-decoration-none" href="/clientPagesShow/singleItemPage/<?=$item['id']?>"><?=$item['name']?></a></h5>
+                                <p class="card-text"><?=$item['description']?></p>
+                                <p class="card-text"><small class="text-muted">Published at <?=$item['publish_date']?></small></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+
+
+        <div class="asideWrap position-absolute">
             <aside class="asideNav d-inline-block">
                 <form class="findByFiltersForm" action="/clientItems/findItemsByFilters" method="post">
                     <div class="pt-3">
-                        <div class="mb-3">
+                        <div class="mt-sm-2 mb-sm-2 mb-3">
                             <input type="text" class="minPrice d-inline-block form-control w-25 form-control-sm" name="minPrice" value="<?= $params['minPrice'] ?>">
                             -
                             <input type="text" class="maxPrice d-inline-block form-control w-25 form-control-sm" name="maxPrice" value="<?= $params['maxPrice'] ?>">
 
 
-                            <div class="d-inline-block findByPriceLabel">
+                            <div class="findByPriceButtonContainer mt-sm-4 mb-sm-4">
                                 <input type="submit" class="findByFilters btn btn-sm btn-primary text-white" value="Search">
-<!--                                <label class="form-label"></label>  <a class="findByFilters badge bg-primary text-wrap text-white text-decoration-none" href="">Search</a>-->
                             </div>
 
                         </div>
-                            <div id="slider-range"></div>
-<!--                        <input id="fromPrice" type="range" class="form-range" min="--><?//= $params['minPrice'] ?><!--" max="--><?//= $params['maxPrice'] ?><!--" step="5">-->
+                            <div class="mt-sm-2 mb-sm-2" id="slider-range"></div>
                     </div>
-                    
-                    <div class="pt-3">
+
+                    <div class="mt-sm-2 mb-sm-2 pt-3">
                         <label for="findByMonthNYear" class="form-label">Find by month and year</label>
                         <input type="date" class="form-control form-control-sm" name="findByDate">
                     </div>
 
-                    <div class="pt-5">
+                    <div class="mt-sm-2 mb-sm-2 pt-5">
                         <label for="" class="form-label">Find by category</label>
                         <select name="findByCategory" id="findByCategory" class="form-select">
                             <?php
@@ -52,27 +74,10 @@
             </aside>
         </div>
 
-        <div class="container cardContainer">
-            <?php foreach ($params['items'] as $item):  ?>
-            <div class="card my-md-4 mx-md-3">
-                <div class="row g-0">
-                    <div class="col-md-4">
-                        <img class="img-fluid" src="/template/images/<?=$item['photo']?>" alt="single image photo">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title"><a class="text-decoration-none" href="/clientPagesShow/singleItemPage/<?=$item['id']?>"><?=$item['name']?></a></h5>
-                            <p class="card-text"><?=$item['description']?></p>
-                            <p class="card-text"><small class="text-muted">Published at <?=$item['publish_date']?></small></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <?php endforeach; ?>
-        </div>
 
 
-        <nav>
+
+        <nav class="paginationNav">
             <ul class="pagination justify-content-center">
 
                 <?php

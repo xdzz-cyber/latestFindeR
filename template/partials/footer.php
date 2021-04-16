@@ -1,4 +1,4 @@
-<footer class="text-center fixed-bottom">
+<footer class="text-center">
     <div class="container p-4 pb-0">
         <section>
             <p class="d-flex justify-content-center align-items-center">

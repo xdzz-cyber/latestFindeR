@@ -1,6 +1,11 @@
 @media screen and (min-width: 620px){
+
+    body{
+        overflow: scroll;
+    }
+
     main{
-        margin: 13% auto;
+        margin: 8% auto;
     }
 
     /* Header */
@@ -65,13 +70,70 @@
         top: 40%;
         left: 70%;
     }
+    /* Login */
+    .loginInfoText{
+        max-width: 80%;
+        margin: 2% auto;
+    }
+
+    /* Registration */
+
+    .registrationHeader{
+        max-width: 80%;
+        margin: 3% auto;
+    }
+
+    .registrationText{
+        max-width: 70%;
+        margin: 1% auto;
+    }
+
+    /* Single item */
+    .singleItemText{
+        max-width: 80%;
+        margin: 3% auto;
+    }
+
+    /* All items(item_index) */
+    .cardContainer{
+        width: 100%;
+        grid-template-areas: "cardElement1 cardElement1"
+                             "cardElement2 cardElement2"
+                             "cardElement3 cardElement3"
+                                "cardElement4 cardElement4";
+        justify-content: center;
+        align-content: center;
+    }
+
+    /* Pagination Nav */
+    .paginationNav{
+        margin: 3% auto;
+    }
+
+    /* Prices */
+    .minPrice, .maxPrice{
+        min-width: 15vw;
+    }
+
 
 }
 
 @media screen and (min-width: 992px){
 
+    body{
+        overflow: hidden;
+    }
+
     main{
         margin: 7% auto;
+    }
+
+    footer{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1030;
     }
 
     /* About us */
@@ -100,42 +162,100 @@
         left: 70%;
         top: 40%;
     }
+
+     /* Login */
+
+    .loginInfoContainer{
+        margin-top: 15vh!important;
+    }
+
+    /* Registration */
+
+    .registrationInfoContainer{
+        margin-top: 15vh!important;
+    }
+
+    .registrationHeader{
+        max-width: 80%;
+        margin: 1% auto;
+    }
+
+    /* All items(item_index) */
+    .cardContainer{
+        width: 100%;
+        grid-template-areas: "cardElement1 cardElement2"
+                             "cardElement3 cardElement4";
+        justify-content: space-evenly;
+        align-content: center;
+    }
+
 }
 
-@media screen and (min-width: 1200px){
 
-    main{
+@media screen and (min-width: 1200px) {
+
+    main {
         margin: 1% auto;
     }
 
     /* About us  */
-
-    .aboutUsImageContainer img{
+    .aboutUsImageContainer img {
         width: 15vw;
     }
 
-    .aboutUsHeaderContainer{
+    .aboutUsHeaderContainer {
         max-width: 45vw;
         margin: 2% auto;
     }
 
-    .aboutUsHeaderContainer h2{
+    .aboutUsHeaderContainer h2 {
         font-size: 1.5em;
     }
 
-    .followUs{
+    .followUs {
         padding-bottom: 3%;
     }
 
     /* Search Form */
-
-    .searchItemsInput{
+    .searchItemsInput {
         width: 20vw;
     }
 
     /* Contact page */
-    .contactIconsContainer{
+    .contactIconsContainer {
         position: absolute;
         top: 35%;
+    }
+
+    /* Single item */
+    .singleItemText {
+        max-width: 40%;
+        margin: 1.5% auto;
+    }
+
+    .singleItemHeaderContainer {
+        margin-top: 5vh;
+    }
+
+    /* All items (item_index)*/
+    .findByPriceButtonContainer {
+        margin: 7% 0;
+    }
+
+    .minPrice, .maxPrice {
+        min-width: 12vw !important;
+    }
+
+    .welcomeHeader {
+        margin: 2% auto;
+    }
+
+    /* All items(item_index) */
+    .cardContainer {
+        width: 100%;
+        grid-template-areas: "cardElement1 cardElement2"
+                             "cardElement3 cardElement4";
+        justify-content: center;
+        align-content: center;
     }
 }

@@ -57,7 +57,6 @@ class ClientItems
         $db = DB::getConnection();
         $skip = 0;
         $perPage = 0;
-        //print_r($search_params);
         if ($search_params){
             $minPrice = $search_params['minPrice'] ?? ClientItems::getMinPrice();
             $maxPrice = $search_params['maxPrice'] ?? ClientItems::getMaxPrice();

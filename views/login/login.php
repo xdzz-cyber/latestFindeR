@@ -7,7 +7,7 @@
         <h1 class="alert-danger"><?= $params['error'] ?></h1>
         <?php } else {?>
         <h1>Login here if you have an existing account</h1>
-        <p class="lead">Please, be sure to fill all blanks with correct credentials, otherwise we won't be able to give you access to our shop</p>
+        <p class="loginInfoText lead">Please, be sure to fill all blanks with correct credentials, otherwise we won't be able to give you access to our shop</p>
         <?php } ?>
     </div>
 

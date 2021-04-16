@@ -19,7 +19,11 @@
         <div class="mainHeaderContainer container">
             <a class="navbar-brand" href="/clientPagesShow/aboutPage">findeR</a>
 
+
                 <ul class="mainHeaderNavbarNav justify-content-evenly navbar-nav mb-lg-0">
+                    <li class="nav-item">
+                        <a href="#" class="showFiltersLink nav-link active" aria-current="page"><i class="fa fa-sort"></i></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/clientItems/clientPagination/1">Home</a>
                     </li>

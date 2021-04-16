@@ -8,8 +8,8 @@
         <?php
             } else {
         ?>
-        <h1>Register to buy item that's needed or just to find something else</h1>
-        <p class="lead">First time visiting our website ? It takes only about a minute, so don't hesitate and register now !!!!</p>
+        <h1 class="registrationHeader">Register to buy item that's needed or just to find something else</h1>
+        <p class="registrationText lead">First time visiting our website ? It takes only about a minute, so don't hesitate and register now !!!!</p>
         <?php } ?>
     </div>
 

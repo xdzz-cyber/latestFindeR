@@ -175,6 +175,22 @@ $(() => {
         });
     }
 
+    function showFiltersOnClick(){
+        $(".showFiltersLink").click(e => {
+            e.preventDefault();
+            let asideWrap = $(".asideWrap");
+            asideWrap.is(":hidden") ? asideWrap.show() : asideWrap.hide();
+            // if(asideWrap.is(":hidden")){
+            //     asideWrap.show();
+            // } else{
+            //     asideWrap.hide();
+            // }
+
+        });
+    }
+
+    showFiltersOnClick();
+
     onBuyItemLinkClick();
 
     showBasketPageIfNotEmpty();
