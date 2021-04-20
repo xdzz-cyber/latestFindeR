@@ -35,7 +35,7 @@
         </div>
 
 
-        <div class="asideWrap position-absolute">
+        <div class="asideWrap position-absolute d-none">
             <aside class="asideNav d-inline-block">
                 <form class="findByFiltersForm" action="/clientItems/findItemsByFilters" method="post">
                     <div class="pt-3">

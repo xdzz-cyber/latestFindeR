@@ -161,3 +161,7 @@ footer a{
     width: 3vw;
     text-align: center;
 }
+
+.basketPaginationList{
+    margin-top: 50vh;
+}

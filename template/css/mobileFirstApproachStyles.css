@@ -8,6 +8,19 @@
         margin: 8% auto;
     }
 
+    footer{
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1030;
+    }
+
+    footer.clearFromStyles{
+        position: static;
+    }
+
+
     /* Header */
 
     header{
@@ -128,7 +141,7 @@
         margin: 7% auto;
     }
 
-    footer{
+    footer, footer.clearFromStyles{
         position: fixed;
         right: 0;
         bottom: 0;

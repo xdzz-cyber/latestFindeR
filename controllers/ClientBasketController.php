@@ -30,9 +30,8 @@ class ClientBasketController
 
         if (count($_SESSION['basket']) < 1 || !$exists) {
             $_SESSION['basket'][] = ['id' => $id, "name" => $foundItem['name'], "price" => $foundItem['price'], "photo" => $foundItem['photo'], "count" => 1];
-
         }
-
+        header("Location: /clientBasket/showBasketItems");
     }
 
     public function actionShowBasketItems()

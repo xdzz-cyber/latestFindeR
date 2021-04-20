@@ -1,3 +1,5 @@
+<?php //var_dump($_SESSION['basket']); ?>
+
 <main>
 
     <div class="singleItemHeaderContainer text-center">

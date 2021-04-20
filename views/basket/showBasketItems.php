@@ -1,3 +1,5 @@
+<?php var_dump($_SESSION['basket']); ?>
+
 <main>
     <?php
     foreach ($_SESSION['basket'] as $item):
@@ -8,14 +10,16 @@
                 <img class="basketSingleImage img-fluid me-3" src="/template/images/<?= $item['photo'] ?>" alt="">
 
 
-                <a href=""><i class="fa fa-minus"></i></a>
-                <input class="basketItemCountInput" value="1" type="text">
-                <a href=""><i class="fa fa-plus"></i></a>
+                <a class="minusItemsCount<?=$item['id']?> me-2" href=""><i class="fa fa-minus"></i></a>
+                <input type="hidden" name="itemId" class="itemId<?=$item['id']?>" value="<?=$item['id']?>">
+                <input class="basketItemCountInput" value="1" min="1" type="range">
+                <input type="text" class="showBasketItemCountInput<?=$item['id']?> form-control-sm">
+                <a class="plusItemsCount<?=$item['id']?>" href=""><i class="fa fa-plus"></i></a>
 
                 <div class="d-inline-block ms-5">
                     <h5 class="d-inline-block pe-3"><?=$item['price']?>$</h5>
                     <a href="#" class="btn btn-success">Submit buy</a>
-                    <a href="" class="btn btn-danger ms-lg-3">Delete</a>
+                    <a href="/" class="deleteBasketItem btn btn-danger ms-lg-3">Delete</a>
                 </div>
 
             </div>
@@ -23,7 +27,7 @@
     <?php endforeach; ?>
 
     <nav aria-label="Page navigation">
-        <ul class="pagination">
+        <ul class="basketPaginationList pagination justify-content-center">
             <li class="page-item"><a class="page-link" href="#">Previous</a></li>
             <li class="page-item"><a class="page-link" href="#">1</a></li>
             <li class="page-item"><a class="page-link" href="#">2</a></li>

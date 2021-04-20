@@ -149,7 +149,6 @@ $(() => {
     async function getBasketItemsCount(){
         let rawData = await fetch("http://mvcShopLatest/template/gettingAsyncData/getBasketItemsCount.php");
         let json_data = await rawData.json();
-        //debugger;
         $(".fa-shopping-basket").append(json_data.count);
         localStorage.setItem("basketItemsCount", json_data.count);
     }
@@ -157,7 +156,6 @@ $(() => {
     function showBasketPageIfNotEmpty(){
 
         $(".basketItemsPageLink").click(e => {
-            //debugger;
             let basketItemsCount =  parseInt(localStorage.getItem("basketItemsCount"),10);
             let showBasket = false;
             if (basketItemsCount > 0){
@@ -179,15 +177,104 @@ $(() => {
         $(".showFiltersLink").click(e => {
             e.preventDefault();
             let asideWrap = $(".asideWrap");
-            asideWrap.is(":hidden") ? asideWrap.show() : asideWrap.hide();
-            // if(asideWrap.is(":hidden")){
-            //     asideWrap.show();
-            // } else{
-            //     asideWrap.hide();
-            // }
-
+            if (asideWrap){
+                asideWrap.toggleClass("d-none");
+            }
         });
     }
+
+    async function asyncItemsCountDecrement(id){
+        $.post("http://mvcShopLatest/template/asyncSettingData/decrementBasketItemsCount.php", {"id": id}, function (data,textStatus){
+            setBasketItemsCount();
+            return data;
+        }, "json");
+    }
+
+    async function minusItemsCountOnClick(){
+        let ids = await asyncGetBasketItemsIds();
+        ids = ids.data;
+        ids.forEach(id => {
+            $(`.minusItemsCount${id}`).click(e => {
+                e.preventDefault();
+                asyncItemsCountDecrement(id);
+            });
+        });
+    }
+
+    async function asyncItemsCountIncrement(id){
+        $.post("http://mvcShopLatest/template/asyncSettingData/incrementBasketItemsCount.php", {"id":id}, function (data, textStatus){
+            setBasketItemsCount();
+            return data;
+        }, "json");
+    }
+
+    async function plusItemsCountOnClick(){
+        let ids = await asyncGetBasketItemsIds();
+        ids = ids.data;
+        ids.forEach(id => {
+            $(`.plusItemsCount${id}`).click(e => {
+                e.preventDefault();
+                asyncItemsCountIncrement(id);
+            })
+        });
+    }
+
+    async function asyncDeleteBasketItem(id){
+        $.post("http://mvcShopLatest/template/asyncDeletingData/deleteBasketItemById.php", {"id":id}, function (data, textStatus){
+            setBasketItemsCount();
+            return data;
+        }, "json");
+    }
+
+    function deleteBasketItemById(){
+        $(".deleteBasketItem").click(e => {
+            e.preventDefault();
+            let id = $(".itemId").val();
+            asyncDeleteBasketItem(id);
+        })
+    }
+
+    function clearFooterStylesIfInMain(){
+        if($(".cardContainer").length){
+            $(".mainFooter").addClass("clearFromStyles");
+        } else{
+            $(".mainFooter").removeClass("clearFromStyles");
+        }
+    }
+
+    async function asyncGetBasketItemsCountById(id){
+        let rawData = await fetch("http://mvcShopLatest/template/gettingAsyncData/getBasketItemsCountById.php", {
+            method: "POST",
+            headers: {
+                "Accept": "application/json",
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({"id":id})
+        });
+        return await rawData.json();
+    }
+
+    async function asyncGetBasketItemsIds(){
+        let rawData = await fetch("http://mvcShopLatest/template/gettingAsyncData/getBasketItemsIds.php");
+        return await rawData.json();
+    }
+
+    async function setBasketItemsCount(){
+        let data = await asyncGetBasketItemsIds();
+        data.data.forEach(async id => {
+            let currentBasketItemCount = await asyncGetBasketItemsCountById(id);
+            $(`.showBasketItemCountInput${id}`).val(currentBasketItemCount.data);
+        });
+    }
+    setBasketItemsCount();
+
+    clearFooterStylesIfInMain();
+
+    deleteBasketItemById();
+
+    plusItemsCountOnClick();
+
+    minusItemsCountOnClick();
 
     showFiltersOnClick();
 
