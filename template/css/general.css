@@ -157,11 +157,11 @@ footer a{
     width: 8vw!important;
 }
 
-.basketItemCountInput{
-    width: 3vw;
-    text-align: center;
-}
+/*.basketItemCountInput{*/
+/*    width: 3vw;*/
+/*    text-align: center;*/
+/*}*/
 
-.basketPaginationList{
-    margin-top: 50vh;
+.basketPaginationNav{
+    margin-top: 30vh;
 }
