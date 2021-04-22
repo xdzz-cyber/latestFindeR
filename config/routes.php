@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    "clientBasket/showBasketItems"=>"clientBasket/showBasketItems",
+    "clientBasket/showBasketItems/([0-9]+)"=>"clientBasket/showBasketItems/$1",
     "clientBasket/addItem/([0-9]+)"=>"clientBasket/addItem/$1",
     "clientUser/logout"=>"clientUser/logout",
     "clientUser/clientLogin"=>"clientUser/clientLogin",

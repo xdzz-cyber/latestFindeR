@@ -83,10 +83,8 @@ $(() => {
             let searchName = $(e.target).val();
             if (searchName) {
                 $.cookie("client_search_name", searchName, {path: "/"});
-                console.log("addCookie")
             } else {
                 $.removeCookie("client_search_name", {path: "/"});
-                console.log("removeCookie")
             }
         });
     }
@@ -149,8 +147,13 @@ $(() => {
     async function getBasketItemsCount() {
         let rawData = await fetch("http://mvcShopLatest/template/gettingAsyncData/getBasketItemsCount.php");
         let json_data = await rawData.json();
-        $(".fa-shopping-basket").append(json_data.count);
-        localStorage.setItem("basketItemsCount", json_data.count);
+        return json_data.count;
+    }
+
+    async function setBasketItemsCountToUI(){
+        let data = await getBasketItemsCount();
+        $(".fa-shopping-basket").append(data);
+        localStorage.setItem("basketItemsCount", data);
     }
 
     function showBasketPageIfNotEmpty() {
@@ -169,7 +172,7 @@ $(() => {
 
     function onBuyItemLinkClick() {
         $(".buyNewItemLink").click(e => {
-            getBasketItemsCount();
+            setBasketItemsCountToUI();
         });
     }
 
@@ -187,17 +190,25 @@ $(() => {
         $.post("http://mvcShopLatest/template/asyncSettingData/decrementBasketItemsCount.php", {"id": id}, function (data, textStatus) {
             setBasketItemsCount();
             setBasketItemsPrice();
+            setBasketItemsTotalSum();
             return data;
         }, "json");
     }
 
     async function minusItemsCountOnClick() {
         let ids = await asyncGetBasketItemsIds();
+        let distinctBasketElementsCount = await asyncGetDistinctBasketItemsCount();
         ids.forEach(id => {
             $(`.minusItemsCount${id}`).click(e => {
+                distinctBasketElementsCount-=1;
                 let currentItemCount = parseInt($(`.showBasketItemCountInput${id}`).val(),10);
                 if(currentItemCount === 1){
+                    if(distinctBasketElementsCount === 0 || distinctBasketElementsCount % 3 !== 0){  /* 3 - MAGIC NUMBER */
+                        e.preventDefault();
+                        removeElementFromUIById(id);
+                    }
                     asyncDeleteBasketItem(id);
+
                 } else{
                     e.preventDefault();
                     asyncItemsCountDecrement(id);
@@ -210,6 +221,7 @@ $(() => {
         $.post("http://mvcShopLatest/template/asyncSettingData/incrementBasketItemsCount.php", {"id": id}, function (data, textStatus) {
             setBasketItemsCount();
             setBasketItemsPrice();
+            setBasketItemsTotalSum();
             return data;
         }, "json");
     }
@@ -226,18 +238,35 @@ $(() => {
 
     async function asyncDeleteBasketItem(id) {
         $.post("http://mvcShopLatest/template/asyncDeletingData/deleteBasketItemById.php", {"id": id}, function (data, textStatus) {
+            setBasketItemsTotalSum();
             return data;
         }, "json");
+    }
+
+    async function asyncGetDistinctBasketItemsCount(){
+        let rawData = await fetch("http://mvcShopLatest/template/gettingAsyncData/getDistinctBasketItemsCount.php");
+        let response = await rawData.json();
+        return response.data;
     }
 
 
     async function deleteBasketItemById() {
         let ids = await asyncGetBasketItemsIds();
+        let distinctBasketElementsCount = await asyncGetDistinctBasketItemsCount();
         ids.forEach(id => {
             $(`.deleteBasketItem${id}`).click(e => {
+                distinctBasketElementsCount-=1;
+                if(distinctBasketElementsCount === 0 || distinctBasketElementsCount % 3 !== 0){  /* 3 - IS A MAGIC NUMBER */
+                    e.preventDefault();
+                    removeElementFromUIById(id);
+                }
                 asyncDeleteBasketItem(id);
             })
         });
+    }
+
+    function removeElementFromUIById(id){
+        $(`.basketSingleItemContainer${id}`).remove();
     }
 
     function clearFooterStylesIfInMain() {
@@ -291,9 +320,36 @@ $(() => {
         });
     }
 
+    async function getBasketItemsTotalSum(){
+        let rawData = await fetch("http://mvcShopLatest/template/gettingAsyncData/getBasketItemsTotalSum.php");
+        let response = await rawData.json();
+        return response.data;
+    }
+
+    async function setBasketItemsTotalSum(){
+        let totalSum = await getBasketItemsTotalSum();
+        $(".basketItemsTotalSumShowElement").text(totalSum.toString());
+    }
+
+    async function clearBasketItems(){
+        let rawData = await fetch("http://mvcShopLatest/template/asyncDeletingData/clearBasketItems.php");
+        let response = await rawData.json();
+        return response.data;
+    }
+
+    async function wipeOffBasketItemsOnClick(){
+        $(".clearBasketLink").click(e => {
+            clearBasketItems();
+        })
+    }
+
+    wipeOffBasketItemsOnClick();
+
+    setBasketItemsTotalSum();
+
     setBasketItemsPrice();
 
-    setBasketItemsCount();
+    setBasketItemsCountToUI();
 
     clearFooterStylesIfInMain();
 
@@ -309,7 +365,7 @@ $(() => {
 
     showBasketPageIfNotEmpty();
 
-    getBasketItemsCount();
+    setBasketItemsCount();
 
     activateSearchBar();
 
