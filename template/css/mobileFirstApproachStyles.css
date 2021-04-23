@@ -128,8 +128,35 @@
         min-width: 15vw;
     }
 
+    /* Basket page */
+    .basketSingleImage{
+        min-width: 16vw;
+    }
+
+    .singleSubmitBuyButton{
+        font-size: 0.9em;
+    }
+
+    .singleDeleteBasketItemButton{
+        font-size: 0.9em;
+    }
+
+    .singleBasketCountInput{
+        width: 10vw;
+    }
+
+    .singleBasketElementContainer{
+        margin-bottom: 2vh;
+    }
 
 }
+
+/*@media screen and (min-width: 767px){*/
+/*    !* Basket page *!*/
+/*    .singleBasketCountInput{*/
+/*        width: 10vw;*/
+/*    }*/
+/*}*/
 
 @media screen and (min-width: 992px){
 
@@ -202,6 +229,13 @@
         align-content: center;
     }
 
+    /* Basket page */
+    .basketSingleImage{
+        min-width: 16vw;
+    }
+    .singleBasketElementContainer{
+        margin-bottom: 0.5vh;
+    }
 }
 
 
@@ -270,5 +304,17 @@
                              "cardElement3 cardElement4";
         justify-content: center;
         align-content: center;
+    }
+
+    /* Basket page */
+    .basketSingleImage{
+        min-width: 11.5vw;
+    }
+}
+
+@media screen and (min-width: 1600px){
+    /* Basket page */
+    .basketSingleImage{
+        min-width: 9vw;
     }
 }
