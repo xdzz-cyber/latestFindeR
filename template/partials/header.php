@@ -33,9 +33,15 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/clientPagesShow/contactPage">Contact</a>
                     </li>
+                    <?php
+                        if (isset($_COOKIE['client_email'])):
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="/clientUser/logout">Logout</a>
                     </li>
+                    <?php
+                        endif;
+                    ?>
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="../../admin/items/pagination/1">Admin</a>
                     </li>

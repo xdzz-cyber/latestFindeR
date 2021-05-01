@@ -25,7 +25,8 @@ if (isset($params['error']) && !empty($params['error'])){
                            placeholder="password">
                 </div>
                 <div class="mb-3">
-                    <input type="submit" name="send" value="Sign up" class="btn btn-success btn-lg">
+                    <input type="submit" name="send" value="Sign up" class="btn btn-success">
+                    <a href="/clientUser/clientRegistration" class="btn btn-primary">Registration</a>
                 </div>
             </form>
         </div>

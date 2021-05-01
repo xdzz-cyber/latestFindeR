@@ -1,8 +1,10 @@
 <?php
 
 return array(
+    "clientBasket/finalSubmitBasketItems"=>"clientBasket/finalSubmitBasketItems",
     "clientBasket/showBasketItems/([0-9]+)"=>"clientBasket/showBasketItems/$1",
     "clientBasket/addItem/([0-9]+)"=>"clientBasket/addItem/$1",
+    "clientUser/showClientItemsTable" => "clientUser/showClientItemsTable",
     "clientUser/logout"=>"clientUser/logout",
     "clientUser/clientLogin"=>"clientUser/clientLogin",
     "clientUser/clientLoginResult"=>"clientUser/clientLoginResult",

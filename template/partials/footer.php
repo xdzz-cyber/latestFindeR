@@ -2,14 +2,15 @@
     <div class="container p-4 pb-0">
         <section>
             <p class="d-flex justify-content-center align-items-center">
-                <?php
-                    if (!isset($_COOKIE['client_email']) || empty($_COOKIE['client_email'])) {
-                ?>
-                <span class="me-3"><a href="/clientUser/clientRegistration" class="register">Register for free</a></span>
-                <a href="/clientUser/clientLogin" class="btn btn-outline-light">Sign up</a>
-                <?php } else { ?>
-                Glad to see you on our website.
-                <?php } ?>
+                It's nice to see you here!!!
+<!--                --><?php
+//                    if (!isset($_COOKIE['client_email']) || empty($_COOKIE['client_email'])) {
+//                ?>
+<!--                <span class="me-3"><a href="/clientUser/clientRegistration" class="register">Register for free</a></span>-->
+<!--                <a href="/clientUser/clientLogin" class="btn btn-outline-light">Sign up</a>-->
+<!--                --><?php //} else { ?>
+<!--                Glad to see you on our website.-->
+<!--                --><?php //} ?>
             </p>
         </section>
     </div>

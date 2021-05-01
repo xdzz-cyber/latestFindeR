@@ -2,6 +2,7 @@
 
 /* here goes model */
 require_once CLIENT_ROOT . "/model/ClientItems.php";
+require_once CLIENT_ROOT . "/model/ClientRelation.php";
 
 class ClientBasketController
 {
@@ -53,6 +54,24 @@ class ClientBasketController
             ClientItems::findItemsByFilters([]);
         }
 
+        return true;
+    }
+
+    public function actionFinalSubmitBasketItems(){
+        $client_id = isset($_COOKIE['client_id']) ? $_COOKIE['client_id'] : 0;
+        $info = "";
+        if(ClientRelation::submitItemsToRelationTable($client_id)){
+            foreach ($_SESSION['basket'] as $item){
+                unset($item);
+            }
+            unset($_SESSION['basket']);
+            $_SESSION['basket'] = [];
+            $info = "Successfully completed order, please, wait 'til our worker will contact you.";
+        } else{
+            $info = "Error making final complete of order. Please, try again.";
+        }
+        $this->params = ["main_content_path"=>"/views/basket/successBasketOrder.php", "info"=>$info];
+        ClientConnectPartials::clientConnectParts($this->params);
         return true;
     }
 

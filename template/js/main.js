@@ -208,7 +208,7 @@ $(() => {
                         removeElementFromUIById(id);
                     }
                     asyncDeleteBasketItem(id);
-
+                    showSubmitButtonOnBasketItemsCountChange();
                 } else{
                     e.preventDefault();
                     asyncItemsCountDecrement(id);
@@ -239,7 +239,7 @@ $(() => {
     async function asyncDeleteBasketItem(id) {
         $.post("http://mvcShopLatest/template/asyncDeletingData/deleteBasketItemById.php", {"id": id}, function (data, textStatus) {
             setBasketItemsTotalSum();
-            return data;
+            return data.data;
         }, "json");
     }
 
@@ -254,13 +254,14 @@ $(() => {
         let ids = await asyncGetBasketItemsIds();
         let distinctBasketElementsCount = await asyncGetDistinctBasketItemsCount();
         ids.forEach(id => {
-            $(`.deleteBasketItem${id}`).click(e => {
+            $(`.deleteBasketItem${id}`).click(async e => {
                 distinctBasketElementsCount-=1;
                 if(distinctBasketElementsCount === 0 || distinctBasketElementsCount % 3 !== 0){  /* 3 - IS A MAGIC NUMBER */
                     e.preventDefault();
                     removeElementFromUIById(id);
                 }
-                asyncDeleteBasketItem(id);
+                let deleteResponse = await asyncDeleteBasketItem(id);
+                showSubmitButtonOnBasketItemsCountChange();
             })
         });
     }
@@ -342,6 +343,25 @@ $(() => {
             clearBasketItems();
         })
     }
+
+    function showSingleBasketSubmitButton(){
+        $(".submitAllItemsLink").hide();
+        $(".singleSubmitBuyButton").show();
+    }
+
+    function showAllBasketSubmitButton(){
+        $(".singleSubmitBuyButton").hide();
+        $(".submitAllItemsLink").show();
+    }
+
+    async function showSubmitButtonOnBasketItemsCountChange(){
+        let distinctBasketItemsCount = await asyncGetDistinctBasketItemsCount();
+        distinctBasketItemsCount > 1 ? showAllBasketSubmitButton() : showSingleBasketSubmitButton();
+        // let count_of_items = parseInt(localStorage.getItem("basketItemsCount"));
+        // count_of_items > 1 ? showAllBasketSubmitButton() : showSingleBasketSubmitButton();
+    }
+
+    showSubmitButtonOnBasketItemsCountChange();
 
     wipeOffBasketItemsOnClick();
 

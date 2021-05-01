@@ -1,7 +1,10 @@
 <main>
     <div class="totalBasketItemsSumContainer text-center mb-5">
         <h1 class="basketItemsTotalSumHeader">Total sum is <span class="basketItemsTotalSumShowElement"></span> $</h1>
-        <h3><a href="/clientItems/clientPagination/1" class="clearBasketLink btn btn-warning mt-3">Clear Basket</a></h3>
+        <div class="d-flex justify-content-center">
+            <h3 class=""><a href="/clientItems/clientPagination/1" class="clearBasketLink btn btn-warning mt-3 me-3">Clear Basket</a></h3>
+            <h3><a href="/clientUser/clientLogin" class="submitAllItemsLink btn btn-success mt-3">Submit all items</a></h3>
+        </div>
     </div>
     <?php
 
@@ -19,13 +22,12 @@
 
                 <a class="minusItemsCount<?=$item['id']?> me-2" href="/clientBasket/showBasketItems/<?=$prev?>"><i class="fa fa-minus"></i></a>
                 <input type="hidden" name="itemId" class="itemId<?=$item['id']?>" value="<?=$item['id']?>">
-<!--                <input class="basketItemCountInput" value="1" min="1" type="range">-->
                 <input type="text" class="showBasketItemCountInput<?=$item['id']?> singleBasketCountInput form-control-sm">
                 <a class="plusItemsCount<?=$item['id']?>" href=""><i class="fa fa-plus"></i></a>
 
                 <div class="d-inline-block ms-5">
                     <h5 class="basketItemPrice<?=$item['id']?> d-inline-block pe-3"><?=$item['price']?>$</h5>
-                    <a href="#" class="singleSubmitBuyButton btn btn-success">Submit buy</a>
+                    <a href="/clientUser/clientLogin" class="singleSubmitBuyButton btn btn-success">Submit buy</a>
                     <a href="/clientBasket/showBasketItems/1" class="singleDeleteBasketItemButton deleteBasketItem<?=$item['id']?> btn btn-danger ms-lg-3">Delete</a>
                 </div>
 

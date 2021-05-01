@@ -165,3 +165,21 @@ footer a{
 .basketPaginationNav{
     bottom: 16vh;
 }
+
+.showClientItemsTable{
+    text-align: center;
+    margin-top: 8vh;
+}
+
+.showClientItemsTable *{
+    border: 1px solid black;
+    text-align: center;
+}
+
+.showClientItemsTableSingleImage{
+    width: 6vw;
+}
+
+.completeBasketOrderFinalMessageContainer{
+    margin-top: 20vh;
+}
