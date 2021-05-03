@@ -52,6 +52,7 @@ footer a{
     color: lightgoldenrodyellow;
 }
 
+
 /* Card */
 
 .card{
@@ -183,3 +184,27 @@ footer a{
 .completeBasketOrderFinalMessageContainer{
     margin-top: 20vh;
 }
+
+
+/* Forget password page */
+.forgetPasswordForm{
+    margin-top: 20vh;
+}
+
+.forgetPasswordForm input[type=email]{
+    width: 15vw;
+}
+
+.forgetUserPasswordResultContainer{
+    margin-top: 20vh;
+}
+
+/* Restore page */
+.restorePasswordPageHeaderContainer{
+    margin-top: 2vh;
+}
+
+.restorePasswordPageForm{
+    margin-top: 12vh;
+}
+

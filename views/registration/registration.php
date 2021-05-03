@@ -7,42 +7,51 @@ if (isset($params['error']) && !empty($params['error'])) {
     </div>
 
     <?php
-    } else {}
+    } else {
     ?>
     <main>
-<!--        <div class="registrationInfoContainer text-center">-->
-<!---->
-<!--            <h1 class="registrationHeader">Register to buy item that's needed or just to find something else</h1>-->
-<!--            <p class="registrationText lead">First time visiting our website ? It takes only about a minute, so don't-->
-<!--                hesitate and register now !!!!</p>-->
-<!--            --><?php //} ?>
-<!--        </div>-->
+        <div class="registrationInfoContainer text-center">
+
+            <h1 class="registrationHeader">Register to buy item that's needed or just to find something else</h1>
+            <p class="registrationText lead">First time visiting our website ? It takes only about a minute, so don't
+                hesitate and register now !!!!</p>
+            <?php } ?>
+        </div>
 
         <div class="registrationFormContainer text-center">
             <form class="registrationForm d-inline-block"
                   action="/clientUser/clientRegistrationResult" method="post">
-                <div class="mb-3">
-                    <input type="text" name="userName"
-                           class="userRegistrationName border form-control" placeholder="name">
+                <div class="d-flex">
+                    <div class="mb-3 me-2">
+                        <input type="text" name="userName"
+                               class="userRegistrationName border form-control" placeholder="name">
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" name="userPassword"
+                               class="userRegistrationPassword border form-control" placeholder="password">
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <input type="password" name="userPassword"
-                           class="userRegistrationPassword border form-control" placeholder="password">
+
+                <div class="d-flex">
+                    <div class="mb-3 me-2">
+                        <input type="email" name="userEmail"
+                               class="userRegistrationEmail border form-control" placeholder="email">
+                    </div>
+                    <div class="mb-3">
+                        <input type="tel" name="userPhone"
+                               class="userRegistrationPhone border form-control" placeholder="phone">
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <input type="email" name="userEmail"
-                           class="userRegistrationEmail border form-control" placeholder="email">
+
+                <div class="d-flex">
+                    <div class="mb-3 me-2">
+                        <textarea class="form-control" name="userAddress" id="userAddress" cols="23" rows="3" placeholder="Put your address here"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <textarea class="form-control" name="userNotes" id="userNotes" cols="23" rows="3" placeholder="Put your notes here"></textarea>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <input type="tel" name="userPhone"
-                           class="userRegistrationPhone border form-control" placeholder="phone">
-                </div>
-                <div class="mb-3">
-                    <textarea class="form-control" name="userAddress" id="userAddress" cols="10" rows="3" placeholder="Put your address here"></textarea>
-                </div>
-                <div class="mb-3">
-                    <textarea class="form-control" name="userNotes" id="userNotes" cols="10" rows="3" placeholder="Put your notes here"></textarea>
-                </div>
+
 
                 <div class="mb-3">
                     <input class="btn btn-success" type="submit" name="send" value="Register">

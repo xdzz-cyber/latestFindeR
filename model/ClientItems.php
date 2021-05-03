@@ -53,7 +53,7 @@ class ClientItems
         return false;
     }
 
-    public static function findItemsByFilters($search_params, $getNumRows = false){
+    public static function findItemsByFilters($search_params = [], $getNumRows = false){
         $db = DB::getConnection();
         $skip = 0;
         $perPage = 0;

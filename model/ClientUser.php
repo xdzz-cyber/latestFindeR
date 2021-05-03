@@ -50,4 +50,20 @@ class ClientUser
         $stmt->execute([$id]) or die(print_r($stmt->errorInfo(),true));
         return $stmt ? $stmt->fetch(PDO::FETCH_ASSOC) : false;
     }
+
+    public static function findUserByEmail($email){
+        $db = DB::getConnection();
+        $query = "select * from clients where client_email = ?";
+        $stmt = $db->prepare($query);
+        $stmt->execute([$email]) or dir(print_r($stmt->errorInfo(),true));
+        return $stmt ? $stmt->fetch(PDO::FETCH_ASSOC) : false;
+    }
+
+    public static function changeUserPassword($id, $newPassword){
+        $db = DB::getConnection();
+        $query = "update clients set client_password = ? where client_id = ?";
+        $stmt = $db->prepare($query);
+        $stmt->execute([$newPassword,$id]) or die(print_r($stmt->errorInfo(),true));
+        return !!$stmt;
+    }
 }

@@ -209,6 +209,9 @@ $(() => {
                     }
                     asyncDeleteBasketItem(id);
                     showSubmitButtonOnBasketItemsCountChange();
+                    if(distinctBasketElementsCount < 2){
+                        window.location.href = "http://mvcshoplatest/clientItems/clientPagination/1"
+                    }
                 } else{
                     e.preventDefault();
                     asyncItemsCountDecrement(id);
@@ -262,6 +265,9 @@ $(() => {
                 }
                 let deleteResponse = await asyncDeleteBasketItem(id);
                 showSubmitButtonOnBasketItemsCountChange();
+                if(distinctBasketElementsCount < 2){
+                    window.location.href = "http://mvcshoplatest/clientItems/clientPagination/1"
+                }
             })
         });
     }
@@ -357,8 +363,6 @@ $(() => {
     async function showSubmitButtonOnBasketItemsCountChange(){
         let distinctBasketItemsCount = await asyncGetDistinctBasketItemsCount();
         distinctBasketItemsCount > 1 ? showAllBasketSubmitButton() : showSingleBasketSubmitButton();
-        // let count_of_items = parseInt(localStorage.getItem("basketItemsCount"));
-        // count_of_items > 1 ? showAllBasketSubmitButton() : showSingleBasketSubmitButton();
     }
 
     showSubmitButtonOnBasketItemsCountChange();
