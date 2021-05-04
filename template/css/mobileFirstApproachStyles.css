@@ -149,6 +149,14 @@
         margin-bottom: 2vh;
     }
 
+    /* Restore user password page */
+    .forgetUserPasswordEmailInput{
+        width: 45vw !important;
+    }
+
+    .newPasswordInput, .newPasswordRepeatInput{
+        width: 35vw !important;
+    }
 }
 
 /*@media screen and (min-width: 767px){*/
@@ -236,6 +244,15 @@
     .singleBasketElementContainer{
         margin-bottom: 0.5vh;
     }
+
+    /* Restore user password page */
+    .forgetUserPasswordEmailInput{
+        width: 25vw !important;
+    }
+
+    .newPasswordInput, .newPasswordRepeatInput{
+        width: 25vw !important;
+    }
 }
 
 
@@ -310,11 +327,25 @@
     .basketSingleImage{
         min-width: 11.5vw;
     }
+
+    /* Restore user password page */
+    .forgetUserPasswordEmailInput{
+        width: 30vw !important;
+    }
+
+    .newPasswordInput, .newPasswordRepeatInput{
+        width: 20vw !important;
+    }
 }
 
 @media screen and (min-width: 1600px){
     /* Basket page */
     .basketSingleImage{
         min-width: 9vw;
+    }
+
+    /* Restore user password page */
+    .forgetUserPasswordEmailInput{
+        width: 20vw !important;
     }
 }

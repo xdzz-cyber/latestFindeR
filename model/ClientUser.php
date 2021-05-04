@@ -1,11 +1,14 @@
 <?php
 
+//namespace App\model;
+require_once __DIR__ . "/../components/DB.php";
 
 class ClientUser
 {
+
     public static function userRegistration($data)
     {
-        $db = DB::getConnection();
+        $db =   DB::getConnection();
         $query = "insert into clients(client_name, client_email, client_phone, client_address, client_notes, client_password) values(:userName, :userEmail, :userPhone, :userAddress, :userNotes, :userPassword)";
         $stmt = $db->prepare($query);
         $stmt->execute([":userName" => $data['userName'] , ":userEmail" => $data['userEmail'], ":userPhone" => $data['userPhone'], ":userAddress" => $data['userAddress'], ":userNotes" => $data['userNotes'] ,":userPassword" => hash("sha256", $data['userPassword'])]);

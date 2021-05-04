@@ -1,14 +1,17 @@
 <?php
 
 /* Here goes model for client user */
-require_once CLIENT_ROOT . "/model/ClientUser.php";
+require_once __DIR__ . "/../model/ClientUser.php";
+//require_once CLIENT_ROOT . "/model/ClientUser.php";
 /* Autoload*/
-require_once CLIENT_ROOT .  '/vendor/autoload.php';
+//require_once CLIENT_ROOT .  '/vendor/autoload.php';
+require_once __DIR__ . "/../vendor/autoload.php";
 
 use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
+//use App\controllers;
 class ClientUserController
 {
     private $params = [];
@@ -86,6 +89,7 @@ class ClientUserController
     public function actionLogout(){
         setcookie("client_email", "", time() - 7200, "/");
         setcookie("client_id", "", time() - 7200, "/");
+        setcookie("client_test_email", "", time() - 7200, "/");
         $_COOKIE = [];
         header("location: ../clientItems/clientPagination/1");
         return true;
@@ -131,7 +135,7 @@ class ClientUserController
             $mail->clearAttachments();
             $mail->clearAllRecipients();
 
-            return true;
+            return $data['userEmail'];
         } catch (Exception $e) {
             return $mail->ErrorInfo;
         }
@@ -140,8 +144,9 @@ class ClientUserController
 
     public function actionCheckForgetUserPasswordResult(){
         $this->params = ["main_content_path"=>"/views/login/forgetUserPasswordResult.php"];
-        if ($this->actionForgetUserPasswordResult()){
+        if ($userEmail = $this->actionForgetUserPasswordResult()){
             $this->params["info"] = "Check your email for link to update your password.";
+            isset($_COOKIE['client_test_email']) ? $_COOKIE['client_test_email'] = $userEmail : setcookie("client_test_email", $userEmail, time() + 60 * 60 * 24, "/");
         } else{
             $this->params["info"] = "Error happened. Please, try again.";
         }

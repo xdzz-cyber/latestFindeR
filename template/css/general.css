@@ -191,13 +191,11 @@ footer a{
     margin-top: 20vh;
 }
 
-.forgetPasswordForm input[type=email]{
-    width: 15vw;
-}
 
 .forgetUserPasswordResultContainer{
     margin-top: 20vh;
 }
+
 
 /* Restore page */
 .restorePasswordPageHeaderContainer{
