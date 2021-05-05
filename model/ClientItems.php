@@ -74,14 +74,11 @@ class ClientItems
             $perPage = $search_params['perPage'];
 
             $query = "select * from items where name like {$findByName} and price between {$minPrice} and {$maxPrice}";
-            //$query = "select * from items where name like :findByName and price between :minPrice and :maxPrice";
             if ($findByCategory > 0){
                 $query.= " and category_id = {$findByCategory}";
-                //$query.= " and category_id = :findByCategory";
             }
             if(!empty($findByDate)){
                 $query.= " and publish_date > '{$findByDate}'";
-                //$query.= " and publish_date > :findByDate";
             }
 
         } else{
@@ -89,11 +86,8 @@ class ClientItems
         }
 
         $query.= !$getNumRows ? " limit {$skip}, {$perPage}" : "";
-        //$query.= !$getNumRows ? " limit :skip , :perPage" : "";
         $stmt = $db->query($query);
-        //$stmt = $db->prepare($query);
 
-        //$stmt->execute([":findByName"=>$findByName, ":minPrice"=>$minPrice, ":maxPrice"=>$maxPrice, ":findByCategory"=>$findByCategory, ":findByDate"=>$findByDate, ":skip"=>$skip, ":perPage"=>$perPage]) or die(print_r($stmt->errorInfo(), true));
 
         if ($getNumRows){
             return $stmt->rowCount();

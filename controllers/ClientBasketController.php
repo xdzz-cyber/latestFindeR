@@ -8,8 +8,6 @@ class ClientBasketController
 {
     private $params;
 
-    /* private $search_params = []; */
-
     public function actionAddItem($id)
     {
         $exists = false;
@@ -75,24 +73,4 @@ class ClientBasketController
         return true;
     }
 
-//    private function actionGetPaginatedBasketItems($from, $to){
-//        $response = [];
-//        if (isset($_SESSION['basket'])){
-//            for ($i=$from;$i < $to; $i++){
-//                $response[] = $_SESSION['basket'][$i];
-//            }
-//            return $response;
-//        }
-//        return false;
-//    }
-
-//    public static function actionGetBasketItemsCount(){
-//        $count = 0;
-//        if (isset($_SESSION['basket'])){
-//            foreach ($_SESSION['basket'] as $item){
-//                $count+=$item['count'];
-//            }
-//        }
-//        return $count;
-//    }
 }

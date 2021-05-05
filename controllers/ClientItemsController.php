@@ -3,6 +3,7 @@
 /* Here goes model connection */
 require_once CLIENT_ROOT . "/model/ClientItems.php";
 require_once CLIENT_ROOT . "/model/ClientItemsCategories.php";
+
 class ClientItemsController
 {
     private $params = [];
@@ -78,7 +79,6 @@ class ClientItemsController
         $custom_search_params = ["findByCategory"=>$findByCategory, "findByDate"=>$findByDate, "maxPrice"=>$maxPrice, "minPrice"=>$minPrice];
         $this->actionClientPagination(1, $custom_search_params);
         return true;
-        // LATER DO WITH RANGE OF PRICE
     }
 
 }

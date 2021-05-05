@@ -17,7 +17,6 @@ class DB
     }
 
     public static function getConnection(){
-        //$db_config_params = include CLIENT_ROOT ."/config/db_config_params.php";
         $db_config_params = include __DIR__ . "/../config/db_config_params.php";
         return new PDO("mysql:host={$db_config_params['host']};dbname={$db_config_params['dbname']}", $db_config_params['login'], $db_config_params['pass']);
     }

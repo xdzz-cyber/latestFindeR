@@ -2,16 +2,13 @@
 
 /* Here goes model for client user */
 require_once __DIR__ . "/../model/ClientUser.php";
-//require_once CLIENT_ROOT . "/model/ClientUser.php";
 /* Autoload*/
-//require_once CLIENT_ROOT .  '/vendor/autoload.php';
 require_once __DIR__ . "/../vendor/autoload.php";
 
 use Dotenv\Dotenv;
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
-//use App\controllers;
 class ClientUserController
 {
     private $params = [];
@@ -27,15 +24,6 @@ class ClientUserController
         $data = DB::protectData($_POST);
         $error = "";
         $user_id = 0;
-//        if ($_FILES['userPhoto']['error'] == 0){
-//            $filenameTMP = $_FILES['userPhoto']['tmp_name'];
-//            $filename = $_FILES['userPhoto']['name'];
-//            move_uploaded_file($filenameTMP, CLIENT_ROOT . "/template/images/{$filename}");
-//            $data['userPhoto'] = $filename;
-//        } else{
-//            $data['userPhoto'] = "noPhoto.png";
-//        }
-
 
         if(ClientUser::userAlreadyExists($data)){
             $error = "User with given credentials already exists";

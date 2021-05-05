@@ -6,7 +6,6 @@ if (isset($_SESSION['basket'])){
         $count+=$item['count'];
     }
 }
-//$count++;
 $encoded_data = json_encode(array("count"=>$count));
 header("Content-type: application/json");
 echo $encoded_data;

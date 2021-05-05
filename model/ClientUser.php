@@ -1,6 +1,5 @@
 <?php
 
-//namespace App\model;
 require_once __DIR__ . "/../components/DB.php";
 
 class ClientUser
@@ -35,11 +34,9 @@ class ClientUser
     {
         $db = DB::getConnection();
         $query = "select client_id from clients where client_email = ? and client_password = ?";
-        //var_dump($data);
         list($userEmail, $userPassword) = array_values($data);
         $stmt = $db->prepare($query);
         $stmt->execute([$userEmail, hash("sha256", $userPassword)]) or die(print_r($stmt->errorInfo(), true));
-        //var_dump($stmt->fetch(PDO::FETCH_ASSOC)['client_id']);
         if ($stmt){
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }

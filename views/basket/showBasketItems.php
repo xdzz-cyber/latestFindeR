@@ -53,8 +53,6 @@
             <?php
             endfor;
             ?>
-<!--            <li class="page-item"><a class="page-link" href="#">2</a></li>-->
-<!--            <li class="page-item"><a class="page-link" href="#">3</a></li>-->
 
             <?php if($params['current_page'] != $numPages): ?>
             <li class="page-item"><a class="page-link" href="/clientBasket/showBasketItems/<?=$next?>">Next</a></li>

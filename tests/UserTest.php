@@ -8,8 +8,6 @@ use PHPUnit\Framework\TestCase;
 class UserTest extends TestCase
 {
 
-    private string $userRestoreEmail;
-
     protected function setUp(): void
     {
     }
