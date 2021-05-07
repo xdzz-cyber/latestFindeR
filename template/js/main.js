@@ -102,10 +102,6 @@ $(() => {
 
 
     async function getMaxMinPriceFromDB() {
-        // $.post("http://mvcShopLatest/template/gettingAsyncData/getMaxMinPrice.php", {}, function (data,textStatus){
-        //     return data;
-        // }, "json");
-
         let response = await fetch("http://mvcShopLatest/template/gettingAsyncData/getMaxMinPrice.php");
         return await response.json();
     }
@@ -231,10 +227,20 @@ $(() => {
 
     async function plusItemsCountOnClick() {
         let ids = await asyncGetBasketItemsIds();
+        let getMaxItemsIds = await getEveryItemCountArray();
+
+        console.log(getMaxItemsIds);
+
         ids.forEach(id => {
             $(`.plusItemsCount${id}`).click(e => {
                 e.preventDefault();
-                asyncItemsCountIncrement(id);
+                debugger
+                let currentItemInputValue = parseInt($(`.showBasketItemCountInput${id}`).val());
+                getMaxItemsIds.forEach(el => {
+                   if(el.id === id && parseInt(el.count) > currentItemInputValue){
+                       asyncItemsCountIncrement(id);
+                   }
+                });
             })
         });
     }
@@ -364,6 +370,14 @@ $(() => {
         let distinctBasketItemsCount = await asyncGetDistinctBasketItemsCount();
         distinctBasketItemsCount > 1 ? showAllBasketSubmitButton() : showSingleBasketSubmitButton();
     }
+
+    async function getEveryItemCountArray(){
+        let rawData = await fetch("http://mvcShopLatest/template/gettingAsyncData/getEveryItemCountArray.php");
+        let parsedData = await rawData.json();
+        console.log(parsedData.data);
+        return parsedData.data;
+    }
+
 
     showSubmitButtonOnBasketItemsCountChange();
 

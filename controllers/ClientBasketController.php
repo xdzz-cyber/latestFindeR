@@ -39,6 +39,11 @@ class ClientBasketController
     public function actionShowBasketItems($current_page = 1)
     {
         $basketItems = $_SESSION['basket'] ?? [];
+
+        for($i = 0; $i < count($basketItems); $i++){
+            $basketItems[$i]["maxItemCount"] = ClientItems::getItemById($basketItems[$i]['id'])['count'];
+        }
+
         $current_page = intval($current_page);
         if ($basketItems) {
             $perPage = 3;

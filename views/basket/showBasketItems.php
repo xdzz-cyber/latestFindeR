@@ -1,3 +1,4 @@
+<?php var_dump($_SESSION['basket']); ?>
 <main>
     <div class="totalBasketItemsSumContainer text-center mb-5">
         <h1 class="basketItemsTotalSumHeader">Total sum is <span class="basketItemsTotalSumShowElement"></span> $</h1>
@@ -22,7 +23,7 @@
 
                 <a class="minusItemsCount<?=$item['id']?> me-2" href="/clientBasket/showBasketItems/<?=$prev?>"><i class="fa fa-minus"></i></a>
                 <input type="hidden" name="itemId" class="itemId<?=$item['id']?>" value="<?=$item['id']?>">
-                <input type="text" class="showBasketItemCountInput<?=$item['id']?> singleBasketCountInput form-control-sm">
+                <input type="number" min="1" max="<?=$item['maxItemCount']?>" class="showBasketItemCountInput<?=$item['id']?> singleBasketCountInput form-control-sm">
                 <a class="plusItemsCount<?=$item['id']?>" href=""><i class="fa fa-plus"></i></a>
 
                 <div class="d-inline-block ms-5">

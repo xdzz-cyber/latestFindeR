@@ -95,4 +95,12 @@ class ClientItems
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
 
+    public static function getAllItemsIdNCount(){
+        $db = DB::getConnection();
+        $query = "select id,count from items";
+        $stmt = $db->prepare($query);
+        $stmt->execute([]) or die(print_r($stmt->errorInfo(),true));
+        return $stmt ? $stmt->fetchAll(PDO::FETCH_ASSOC) : false;
+    }
+
 }
